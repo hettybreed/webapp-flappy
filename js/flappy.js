@@ -19,11 +19,22 @@ var pipes = [];
 /*
  * Loads all resources for the game and gives them names.
  */
+
+jQuery("#greeting-form").on("submit", function(event_details) {
+    var greeting = "Hello ";
+    var name = jQuery("#fullName").val();
+    var greeting_message = greeting + name;
+    jQuery("#greeting-form").hide();
+    jQuery("#greeting").append("<p>" + greeting_message + "</p>");
+});
+
+
 function preload() {
 game.load.image("playerImg","../assets/flappy_batman.png");
 game.load.image("backgroundImg", "../assets/THEBATMAN.jpg");
     game.load.audio("score", "../assets/point.ogg");
-    game.load.image("pipe","../assets/pipe_red.png")
+    game.load.image("pipe","../assets/Skyscraper.png")
+    game.load.audio("MUSIC","../assets/BatmanSong.mp3")
 }
 
 /*
@@ -37,9 +48,9 @@ function  create() {
         {font: "45px Consolas", fill: "#FFFFFF"});
    // game.add.sprite(50, 250, "playerImg");
 
-    alert(score);
+    //alert(score);
 
-    labelScore = game.add.text(20, 20, "0");
+    labelScore = game.add.text(20, 20, "0",{font: "45px Consolas", fill: "#FFFFFF"});
   //  player = game.add.sprite(100, 200, "playerImg");
 
 
@@ -56,17 +67,25 @@ function  create() {
         .addKey(Phaser.Keyboard.SPACEBAR)
         .onDown.add(playerJump, spaceHandler);
 
+
+
     generatePipe();
     game.physics.startSystem(Phaser.Physics.ARCADE);
    player = game.add.sprite(80, 200, "playerImg");
+    player.scale.x = 0.8;
+    player.scale.y = 0.8;
     game.physics.arcade.enable(player);
 
     player.body.velocity.x = 40;
     player.body.velocity.y = -80;
     player.body.gravity.y = 900;
 
-    pipeInterval=2;
+    pipeInterval=3;
     game.time.events.loop(pipeInterval * Phaser.Timer.SECOND, generatePipe);
+
+    var music = game.sound.play("MUSIC");
+    music.loop = true;
+
 }
 
 
@@ -75,20 +94,22 @@ function clickHandler(event) {
     game.add.sprite(event.x, event.y, "playerImg");
     game.sound.play("score");
 
-    changeScore();
+  //  changeScore();
 
 }
 function spaceHandler(event){
     alert("The position is: " + event.x + "," + event.y);
     game.add.sprite(event.x, event.y, "playerImg");
     game.sound.play("score");
-    changeScore();}
+    changeScore();
+}
 
 function changeScore() {
 
    score = score+1;
     realScore = Math.max(0, score);
-    labelScore.setText(realScore.toString());
+    labelScore.setText(realScore.toString(),
+        {font: "45px Consolas", fill: "#FFFFFF"});
 }
 
 function moveRight() {
@@ -111,14 +132,15 @@ function generatePipe() {
     for (var count=0; count<8; count++) {
         if (count != gap && count != gap+1) {
             addPipeBlock(800, count*50);}}
-    changeScore()
+
+    changeScore();
 }
-function addPipeBlock (x,y){
+/*function addPipeBlock (x,y){
     var block = game.add.sprite(x,y,"pipe");
     pipes.push(block);
-}
+}*/
 function playerJump() {
-    player.body.velocity.y = -200;
+    player.body.velocity.y = -250;
 }
 function addPipeBlock(x, y) {
     var pipeBlock = game.add.sprite(x,y,"pipe");
@@ -144,5 +166,31 @@ toolow();
 }
 
 function gameOver(){
-    location.reload();
+    //location.reload();
+    game.destroy();
+    $("#greeting").show();
+    $("#score").val(score.toString());
+
+}
+$.get("/score", function(scores){
+
+    console.log("Data: ",scores);
+    scores.sort(function (scoreA, scoreB) {
+        var difference = scoreB.score - scoreA.score;
+        return difference;
+    });
+        for (var i = 0; i < 5; i++) {
+            $("#scoreBoard").append(
+                "<li>" +
+                scores[i].name + ": " + scores[i].score +
+                "</li>");
+        }
+
+});
+
+function isEmpty(str) {
+    return (!str || 0 === str.length);
+}
+if(isEmpty(fullName)) {
+    response.send("Please make sure you enter your name.");
 }

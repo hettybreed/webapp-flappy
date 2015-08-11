@@ -5,7 +5,7 @@ body {
     -o-background-size: cover;
     margin: 0;
     /*width: 100%;*/
-    background: url('flappy-bg.png') repeat;
+    background: url('Capture.PNG') repeat;
 }
 #header {
     background-size: cover;
@@ -22,8 +22,8 @@ body {
 }
 #header p{
     color: white;
-    font-family: 'Roboto', sans-serif;
-    font-size: 20px;
+    font-family: 'Consolas', sans-serif;
+    font-size: 40px;
 }
 #header a{
     text-decoration: none;
@@ -31,7 +31,7 @@ body {
 #header h1 {
     color: white;
     font-family: 'Roboto', sans-serif;
-    font-size: 46px;
+    font-size: 56px;
 }
 #flappy {
     position: absolute;
