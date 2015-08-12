@@ -13,6 +13,8 @@ var gameSpeed = 200;
 var gameGravity = 200;
 var jumpPower = 200;
 
+
+
 var game = new Phaser.Game(width, height, Phaser.AUTO, 'game', stateActions);
 
 var score = -3;
