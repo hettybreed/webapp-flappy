@@ -7,14 +7,7 @@ body {
     /*width: 100%;*/
     background: url('Capture.PNG') repeat;
 }
-#header {
-    background-size: cover;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background: url('flappy-header.png') top center no-repeat;
-    background-size: 100%;
-}
+
 #cca {
     padding-top: 5%;
     padding-left: 60%;

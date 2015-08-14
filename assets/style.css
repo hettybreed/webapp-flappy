@@ -1,8 +1,27 @@
+
+
+body {
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    margin: 0;
+    /*width: 100%;*/
+    background: url('Capture.PNG') repeat;
+}
+
 h1{
     color:#000000;
-    font-size: 70px;
+    font-size: 50px;
     font-family: Consolas;
 }
+
+h2{
+    color:#000000;
+    font-size: 30px;
+    font-family:  Consolas;
+}
+
 #greeting {position: absolute;
     display: none;
     left: 40%;
@@ -24,7 +43,7 @@ h1{
 
 .gold {
     color: red;
-    font-family: Consolas;
+    font-family:  Consolas;
     font-size: 25px ;
 }
 
@@ -34,9 +53,28 @@ h1{
     font-size: 45px;
 }
 
-p{
-    color: #000000;
-    font-family: Consolas;
+
+.h3 {color: #000000
+font-family: 'Consolas';
     font-size: 35px;
-    align-content: center;
+    align-content: center;}
+
+#footer p{
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    padding: 20px;
+    padding-top: 9%;
+    padding-left: 15%;
+    margin: 0;
+}
+#game {
+    margin: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 800px;
+}
+
+#logo {
+    width: 220px;
 }

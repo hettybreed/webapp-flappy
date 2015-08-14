@@ -27,14 +27,7 @@ var blockHeight= 50;
 var balloons= [];
 var Joker=[];
 
-//$.get("/score", function(scores){
-//    //var scores = JSON.parse(data);
-//    //console.log(data);
-//    console.log(scores);
-//    for (var i = 0; i < scores.length; i++) {
-//        $("#scoreBoard").append("<li>" + scores[i].name + ": " +
-//        scores[i].score + "</li>");
-//    }});
+
  $.get("/score", function(scores){
 
  console.log("Data: ",scores);
@@ -212,7 +205,7 @@ function generateJoker(){
 
     Joker.push(bonus);
     game.physics.arcade.enable(bonus);
-    bonus.body.velocity.x= -75;
+    bonus.body.velocity.x= -200;
     bonus.body.velocity.y= game.rnd.integerInRange(60, 100);
     console.log("Joker");
 
@@ -261,6 +254,7 @@ function update() {
 
             gameSpeed;
         }
+
     }
 
 function scoreadd (index){
@@ -268,20 +262,8 @@ function scoreadd (index){
     score = score+2;
     balloons[index].kill();
 }
-    //game.paused<(true)>;
-/*function keyDown(e) {
-    if (e.keyCode == 80) pauseGame();
-}
 
-function pauseGame() {
-    if (!gamePaused) {
-        game = clearTimeout(game);
-        gamePaused = true;
-    } else if (gamePaused) {
-        game = setTimeout(gameLoop, 1000 / 30);
-        gamePaused = false;
-    }
-}*/
+
 function changeGravity(g) {
     gameGravity += g;
     player.body.gravity.y = gameGravity;
