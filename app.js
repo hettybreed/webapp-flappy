@@ -7,19 +7,8 @@ var app = express();
 app.use(express.static(path.join(__dirname, "")));
 app.use(bodyParser.urlencoded({extended:true}));
 app.get("/", function(request, response){
-    response.sendFile(path.join(__dirname, "pages/simple.txt2.html"));
-});
-app.get("/score", function(request, response) {
-    var reader = csv.createCsvFileReader("scores.csv");
-    reader.setColumnNames(['name', 'email', 'score']);
-    var scores = [];
-    reader.addListener('data', function(data) {
-        scores.push(data);
-    });
-    reader.addListener('end', function(){
-        response.send(scores);
-    })
-});
+    response.sendFile(path.join(__dirname, "pages/simple_txt2.html"))});
+
 app.post('/score', function(request, response){
     var name = request.body.fullName;
     var email = request.body.email;
@@ -30,13 +19,29 @@ app.post('/score', function(request, response){
 
     database.writeRecord(data);
     database.writeStream.end();
-    response.send("Thanks " + name + ", your score has been recorded!");
 
-    response.send(request.body.fullName + " ("
-    + request.body.email + "): " + request.body.score);
+    response.send("Thanks " + name + ", your score has been recorded! Please press return to play aain.");
 });
 
-var server = app.listen(8080, function() {
+app.get("/score", function(request, response) {
+        var reader = csv.createCsvFileReader("scores.csv");
+        reader.setColumnNames(['name', 'email', 'score']);
+
+
+        var scores = [];
+        reader.addListener('data', function(data) {
+            scores.push(data);
+        });
+        reader.addListener('end', function(){
+            response.send(scores);
+        })
+});
+
+   // response.send(request.body.fullName + " ("
+    //+ request.body.email + "): " + request.body.score);
+
+
+var server = app.listen((process.env.PORT || 8080), function() {
     var host = server.address().address;
     var port = server.address().port;
 
