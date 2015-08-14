@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+
+
+<head>
+    <title>Cambridge Coding Academy Flappy Bird</title>
+    <!--<link rel="stylesheet" href="../assets/cca.css">-->
+
+    <script src="../lib/jquery.js"></script>
+    <script type="text/javascript" src="../lib/phaser.min.js"></script>
+    <script type="text/javascript" src="../js/flappy.js"></script>
+
+    <link rel="stylesheet" href="../lib/bootstrap.css"/>
+    <link rel="stylesheet" href="../assets/style.css"/>
+
+</head>
+
+ <body>
+
+
+
+
+
+     <div>
+    <h1> <b> <center> Hello and welcome to the #pleasetrynottokillBatmangame </center> </b> </h1>
+         <h2> <center> Also pretty please do not sue us in relation to any copy right issues, it was all Alfred's idea.</center></h2>
+                    </div>
+
+     <div class="container">
+         </div>
+
+
+                  <div id="greeting">
+                      <h3>Save your score</h3>
+                      <form id="greeting-form"method="post" action="/score">
+
+                          <div class="form-group">
+                              <label for="fullName">What's your name?</label>
+                              <input type="text" id="fullName" class="form control"
+                                     name="fullName" placehholder=" Bob" required>
+
+                              <label for="email">What's your email?</label>
+                              <input type="email" id="email" class="form-control"
+                                     name="email" placeholder="bob@email.com">
+
+                              <input type="hidden" id="score" name="score" value="0">
+
+                          </div>
+                          <button class="btn btn-default" type="submit">OK</button>
+                      </form>
+                            </div>
+
+
+
+
+
+
+                <!--img src="../assets/Capture.PNG" /-->
+     <h3>
+     <center>
+         This game uses your skill to maneuver Batman safely through Gotham and its big houses!
+                                                                                    </center> </h3>
+     <p>
+     <center>
+      To gain extra points collect the Batman Symbols! However, If you fly into The Joker there will be fatal consequences!
+         GOOD LUCK!!
+
+                                                                                     </center> </p>
+
+     <p> The Highest Scores Are: </p>
+     <ul id="scoreBoard">
+     </ul>
+
+                                <div id="game"></div>
+
+ <img src="../assets/batman_arkham.png" class="img-responsive" />
+
+
+
+
+
+
+ <div id="footer"> </div>
+            <p>&copy; HETTY AND KATHERINE ARE THE BEST AT CODING </p>
+                                                     </div>
+
+
+
+
+
+
+
+
+
+
+</head>
+
+ </body>
+
+
+</html>
